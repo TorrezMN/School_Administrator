@@ -1,5 +1,5 @@
 <div align='center'>
-# School Administrator App <br/>
+<h1>School Administrator App</h1> <br/>
 A small simple application to manage primary schools.
 </div>
 
