@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from django.views.generic import TemplateView
 
-# Create your views here.
+
+
+class Admin_Home(TemplateView):
+    template_name = 'admin_home.html'

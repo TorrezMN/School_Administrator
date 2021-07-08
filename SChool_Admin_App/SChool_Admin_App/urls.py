@@ -17,14 +17,14 @@ from django.contrib import admin
 from django.urls import include, path
 
 
-from app_administration import views as administration_views
+from app_administration import urls as administration_urls
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     
     #<=================================>#
     #        Admin Urls					#
     #<=================================>#
-    path('administrator/', include(administration_views))
+    path('administrator/', include(administration_urls)),
 ]
