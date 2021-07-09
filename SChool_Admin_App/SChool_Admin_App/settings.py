@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
+from django.contrib.messages import constants as messages
+
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -51,6 +54,23 @@ INSTALLED_APPS = [
     'app_db',
     'app_tutors',
     #<===========================Fin================================>#
+    #<===========================================================>#
+    #..#######.....########.....###....########..########.##....###
+    #.##.....##....##.....##...##.##...##.....##....##.....##..##.#
+    #........##....##.....##..##...##..##.....##....##......####..#
+    #..#######.....########..##.....##.########.....##.......##...#
+    #........##....##........#########.##...##......##.......##...#
+    #.##.....##....##........##.....##.##....##.....##.......##...#
+    #..#######.....##........##.....##.##.....##....##.......##...#
+    #<===========================================================>#
+    
+    
+    'crispy_forms',
+
+    
+    
+    
+    #<===========================Fin=============================>#
 ]
 
 MIDDLEWARE = [
@@ -158,3 +178,41 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 
 )
+
+
+
+
+#<=================================>#
+#            AUTH				    #
+#<=================================>#
+AUTH_USER_MODEL = 'app_db.User'
+
+
+
+
+
+# Custom Django auth settings
+#LOGIN_URL = 'accounts_ingresar'
+#LOGOUT_URL = 'accounts_salir'
+#LOGIN_REDIRECT_URL = 'home'
+#LOGOUT_REDIRECT_URL = 'home'
+# Messages built-in framework
+MESSAGE_TAGS = {
+messages.DEBUG: 'alert-secondary',
+messages.INFO: 'alert-info',
+messages.SUCCESS: 'alert-success',
+messages.WARNING: 'alert-warning',
+messages.ERROR: 'alert-danger',
+}
+# Third party apps configuration
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+# Session time
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 60 * 60 #
+
+
+
+ 
+ 
+ 
+
