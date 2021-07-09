@@ -129,3 +129,19 @@ class Student(models.Model):
     age = models.IntegerField('Edad')
     date_of_birth = models.DateField(
         'Fecha de Nacimiento', auto_now=False, auto_now_add=False)
+
+
+class Mantaince_Request(models.Model):
+    active = 1
+    unsolved = 2
+    resolved = 3
+    CONDITION_CHOICES = (
+        (active, 'Activo'),
+        (unsolved, 'Pendiente'),
+        (resolved, 'Resuelto'),
+    )
+    request_status = models.IntegerField(
+        'Estado', choices=CONDITION_CHOICES, default=active)
+    user_request = models.ForeignKey(User, on_delete=models.CASCADE)
+    date = models.DateField('Fecha', auto_now=False, auto_now_add=False)
+    description = models.TextField('Descripcion')
