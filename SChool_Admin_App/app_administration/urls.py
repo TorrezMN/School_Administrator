@@ -18,10 +18,16 @@ from django.urls import include, path
 
 
 from .views import Admin_Home
+from .views import Admin_New_Employee
 
 urlpatterns = [
 
     path('', Admin_Home.as_view(), name='admin_home'),
+    
+    # Employees
+    path(r'nuevo_empleado', Admin_New_Employee.as_view(), name='admin_new_employee'),
+
+
     
 
 ]

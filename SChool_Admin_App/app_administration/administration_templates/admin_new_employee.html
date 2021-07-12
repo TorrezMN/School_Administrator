@@ -1,0 +1,25 @@
+{% extends 'admin_base.html' %} {% load crispy_forms_tags %} {% block content %}
+<center>
+  <h1>Nuevo Empleado</h1>
+</center>
+<hr />
+<center>
+  <div class="container">
+    <form method="post">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col">
+            <h3>Instrucciones</h3><br>
+            <p class="fw-light">Ingrese los datos del usuario de forma correcta.</p>
+
+        </div>
+        <div class="col">
+                {{form_empleado|crispy}}
+                
+          <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</center>
+{% endblock content %}

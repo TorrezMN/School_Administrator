@@ -145,3 +145,6 @@ class Mantaince_Request(models.Model):
     user_request = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField('Fecha', auto_now=False, auto_now_add=False)
     description = models.TextField('Descripcion')
+
+
+
