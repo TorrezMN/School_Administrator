@@ -16,15 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-
 from app_administration import urls as administration_urls
 
+from app_public.views import Home
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
-    
-    #<=================================>#
-    #        Admin Urls					#
-    #<=================================>#
+
+    #  PUBLIC URLS
+    path('', Home.as_view(), name='home'),
+
+    #  ADMIN URLS
     path('administrator/', include(administration_urls)),
 ]

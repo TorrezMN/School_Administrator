@@ -12,12 +12,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from django.contrib.messages import constants as messages
 
-
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -28,8 +26,7 @@ SECRET_KEY = 'y$5o#f!r+#*xm96y!ba+yaeh3t4d0-ltygztc!%68*e#67u47+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -40,37 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #<==============================================================>#
-    #.##.....##.##....##.......###....########..########...######....#
-    #.###...###..##..##.......##.##...##.....##.##.....##.##....##...#
-    #.####.####...####.......##...##..##.....##.##.....##.##.........#
-    #.##.###.##....##.......##.....##.########..########...######....#
-    #.##.....##....##.......#########.##........##..............##...#
-    #.##.....##....##.......##.....##.##........##........##....##...#
-    #.##.....##....##.......##.....##.##........##.........######....#
-    #<==============================================================>#
+    #  MY APPS
     'app_accounts',
     'app_administration',
     'app_db',
     'app_tutors',
-    #<===========================Fin================================>#
-    #<===========================================================>#
-    #..#######.....########.....###....########..########.##....###
-    #.##.....##....##.....##...##.##...##.....##....##.....##..##.#
-    #........##....##.....##..##...##..##.....##....##......####..#
-    #..#######.....########..##.....##.########.....##.......##...#
-    #........##....##........#########.##...##......##.......##...#
-    #.##.....##....##........##.....##.##....##.....##.......##...#
-    #..#######.....##........##.....##.##.....##....##.......##...#
-    #<===========================================================>#
-    
-    
+    #  3 PARTY APPS
     'crispy_forms',
-
-    
-    
-    
-    #<===========================Fin=============================>#
 ]
 
 MIDDLEWARE = [
@@ -87,14 +60,18 @@ ROOT_URLCONF = 'SChool_Admin_App.urls'
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'BACKEND':
+        'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'template_base'),
+            os.path.join(BASE_DIR, 'app_public', 'public_templates'),
             os.path.join(BASE_DIR, 'app_accounts', 'accounts_templates'),
-            os.path.join(BASE_DIR, 'app_administration', 'administration_templates'),
+            os.path.join(BASE_DIR, 'app_administration',
+                         'administration_templates'),
             os.path.join(BASE_DIR, 'app_tutors', 'tutors_templates'),
         ],
-        'APP_DIRS': True,
+        'APP_DIRS':
+        True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -108,14 +85,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'SChool_Admin_App.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3"))
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_NAME'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
 
@@ -124,25 +104,27 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 LANGUAGE_CODE = 'es-ar'
-
 
 TIME_ZONE = 'UTC'
 
@@ -152,45 +134,31 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
-
-
 """
- 
-  ██████╗██╗   ██╗███████╗████████╗ ██████╗ ███╗   ███╗     ██████╗███████╗ ██████╗ 
- ██╔════╝██║   ██║██╔════╝╚══██╔══╝██╔═══██╗████╗ ████║    ██╔════╝██╔════╝██╔════╝ 
+
+  ██████╗██╗   ██╗███████╗████████╗ ██████╗ ███╗   ███╗     ██████╗███████╗ ██████╗
+ ██╔════╝██║   ██║██╔════╝╚══██╔══╝██╔═══██╗████╗ ████║    ██╔════╝██╔════╝██╔════╝
  ██║     ██║   ██║███████╗   ██║   ██║   ██║██╔████╔██║    ██║     █████╗  ██║  ███╗
  ██║     ██║   ██║╚════██║   ██║   ██║   ██║██║╚██╔╝██║    ██║     ██╔══╝  ██║   ██║
  ╚██████╗╚██████╔╝███████║   ██║   ╚██████╔╝██║ ╚═╝ ██║    ╚██████╗██║     ╚██████╔╝
-  ╚═════╝ ╚═════╝ ╚══════╝   ╚═╝    ╚═════╝ ╚═╝     ╚═╝     ╚═════╝╚═╝      ╚═════╝ 
-                                                                                    
- 
+  ╚═════╝ ╚═════╝ ╚══════╝   ╚═╝    ╚═════╝ ╚═╝     ╚═╝     ╚═════╝╚═╝      ╚═════╝
+
+
 """
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # This is now a string
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # So is this
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-
-)
-
-
-
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 
 #<=================================>#
 #            AUTH				    #
 #<=================================>#
 AUTH_USER_MODEL = 'app_db.User'
-
-
-
-
 
 # Custom Django auth settings
 #LOGIN_URL = 'accounts_ingresar'
@@ -199,21 +167,14 @@ AUTH_USER_MODEL = 'app_db.User'
 #LOGOUT_REDIRECT_URL = 'home'
 # Messages built-in framework
 MESSAGE_TAGS = {
-messages.DEBUG: 'alert-secondary',
-messages.INFO: 'alert-info',
-messages.SUCCESS: 'alert-success',
-messages.WARNING: 'alert-warning',
-messages.ERROR: 'alert-danger',
+    messages.DEBUG: 'alert-secondary',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
 }
 # Third party apps configuration
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 # Session time
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-SESSION_COOKIE_AGE = 60 * 60 #
-
-
-
- 
- 
- 
-
+SESSION_COOKIE_AGE = 60 * 60  #
