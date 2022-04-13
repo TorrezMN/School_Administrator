@@ -1,0 +1,36 @@
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+body{
+  min-width:100%;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+.titleContainer{
+  width:100%;
+  min-height:20vh;
+  background:black;
+  color:white;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+.titleContainer>p{
+  font-size:3rem;
+}
+
+a{
+  text-decoration:none;
+  font-size:2rem;
+  color:orange;
+  text-align:center;
+  cursor:poiinter;
+}

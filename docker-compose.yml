@@ -4,6 +4,7 @@ version: "3.9"
 services:
   db:
     image: postgres
+    # image: postgres:12.0-alpine
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
@@ -18,8 +19,10 @@ services:
     ports:
       - "8000:8000"
     environment:
+      - SECRET_KEY=fñlaksjdfñlkaewnflkw4324234321lkjasdfk
       - POSTGRES_NAME=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+      - DEBUG=True
     depends_on:
       - db
